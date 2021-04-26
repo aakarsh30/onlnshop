@@ -1,9 +1,9 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React,{useState} from 'react';
 import {Grid,AppBar,Toolbar,Button,makeStyles,Typography,ButtonGroup,IconButton } from '@material-ui/core';
-import {ShoppingBasket,LocalMall} from '@material-ui/icons';
-import Bgimg from './photos/key.png';
+import {ShoppingBasket,LocalMall,MenuRounded} from '@material-ui/icons';
+import Menu from './component/Menu';
 
 const useStyles=makeStyles((theme)=>({
   
@@ -37,12 +37,17 @@ const useStyles=makeStyles((theme)=>({
 
 function App() {
   const classes=useStyles();
+  const [menuop,setmenuop]=useState(false);
   
   return (
-    <Grid className={classes.bdy} xs={12} container>
-      <Grid xs={12} item>
+    <>
+    <Grid  xs={12} container>
+      <Grid xs={12} item  >
         <AppBar  className={classes.header}  position="static">
           <Toolbar>
+            <IconButton style={{marginRight:"3%"}} onClick={()=> setmenuop(!menuop)} className={classes.btn} size="large" >
+              <MenuRounded />
+            </IconButton>
             <Typography className={classes.title} variant='h4'>OnlShp</Typography>
             
               <IconButton className={classes.btn} size="large" >
@@ -57,7 +62,12 @@ function App() {
         </AppBar>
         
       </Grid>
+     
     </Grid>
+    <Grid style={{width:"100%",height:"100%"}}  container>
+     { menuop && <Menu />}
+    </Grid>
+    </>
   );
 }
 
