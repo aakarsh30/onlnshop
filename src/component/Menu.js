@@ -1,39 +1,40 @@
 
-import React,{useState} from 'react';
-import {Grid,Button,makeStyles,Typography,IconButton } from '@material-ui/core';
-import {ShoppingBasket,LocalMall} from '@material-ui/icons';
-const design=makeStyles(()=>({
-   menudes:{
+import React, { useState } from 'react';
+import { Grid, Button, makeStyles,Box } from '@material-ui/core';
+
+const design = makeStyles(() => ({
+    menudes: {
         paddingBottom: "8px"
     },
-    btn:{
-        width:"100%",
-        color:"grey",
-        '&:hover':{
-          backgroundColor: "#EDEDED"
+    btn: {
+        width: "100%",
+        color: "grey",
+        '&:hover': {
+            backgroundColor: "#EDEDED"
         },
-        '&:focus':{
-          backgroundColor: "#EDEDED",
-          
+        '&:focus': {
+            backgroundColor: "#EDEDED",
+
         }
 
-}})
+    }
+})
 );
-const productsec=["Electronics","Mobiles","Laptops & PC","Groccery","Fashion","Appliances"];
+const productsec = ["Electronics", "Mobiles", "Laptops & PC", "Groccery", "Fashion", "Appliances"];
 export default function Menu() {
-    const des=design();
+    const des = design();
     return (
         <>
-            <Grid direction="column" spacing={4}  style={{height:"100%",width:"20%",backgroundColor:"#F8F8F8",paddingTop:"40px"}} item>
-                {productsec.map((items)=>{
-                    return(
-                        <Grid className={des.menudes} style={{width:"100%"}} item>
+            <Grid xs={12} sm={6} md={3} direction='column-reverse'  style={{ height: "100%",backgroundColor: "#F8F8F8", paddingTop: "40px" }} item>
+                {productsec.map((items) => {
+                    return (
+                        <Box className={des.menudes} style={{ width: "100%" }} >
                             <Button variant="text" size="large" aria-label="text primary button group" className={des.btn}>{items}</Button>
-                        </Grid>
+                        </Box>
                     )
                 })}
             </Grid>
-            
+
         </>
     )
 }
